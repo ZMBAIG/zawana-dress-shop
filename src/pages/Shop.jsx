@@ -1,26 +1,27 @@
-import { useState, useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { products, categories } from '../data/products';
-import ProductCard from '../components/ProductCard';
+import { useState, useMemo } from "react";
+import { useSearchParams } from "react-router-dom";
+import { products, categories } from "../data/products";
+import ProductCard from "../components/ProductCard";
 
 export default function Shop() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const activeCategory = searchParams.get('category') || 'all';
-  const [sortBy, setSortBy] = useState('featured');
+  const activeCategory = searchParams.get("category") || "all";
+  const [sortBy, setSortBy] = useState("featured");
 
   const filtered = useMemo(() => {
-    let result = activeCategory === 'all'
-      ? [...products]
-      : products.filter((p) => p.category === activeCategory);
+    let result =
+      activeCategory === "all"
+        ? [...products]
+        : products.filter((p) => p.category === activeCategory);
 
     switch (sortBy) {
-      case 'price-asc':
+      case "price-asc":
         result.sort((a, b) => a.price - b.price);
         break;
-      case 'price-desc':
+      case "price-desc":
         result.sort((a, b) => b.price - a.price);
         break;
-      case 'newest':
+      case "newest":
         result.sort((a, b) => (b.new ? 1 : 0) - (a.new ? 1 : 0));
         break;
       default:
@@ -30,10 +31,10 @@ export default function Shop() {
   }, [activeCategory, sortBy]);
 
   const setCategory = (cat) => {
-    if (cat === 'all') {
-      searchParams.delete('category');
+    if (cat === "all") {
+      searchParams.delete("category");
     } else {
-      searchParams.set('category', cat);
+      searchParams.set("category", cat);
     }
     setSearchParams(searchParams);
   };
@@ -45,7 +46,8 @@ export default function Shop() {
         <div className="container-custom text-center">
           <h1 className="section-title mb-3">Shop Dresses</h1>
           <p className="text-gray-500 max-w-md mx-auto">
-            Explore our curated collection of elegant dresses for every occasion.
+            Explore our curated collection of elegant dresses for every
+            occasion.
           </p>
         </div>
       </div>
@@ -60,8 +62,8 @@ export default function Shop() {
                 onClick={() => setCategory(cat.id)}
                 className={`px-4 py-2 text-sm font-medium tracking-wide transition-colors ${
                   activeCategory === cat.id
-                    ? 'bg-zawana-800 text-white'
-                    : 'bg-white text-gray-600 border border-zawana-200 hover:border-zawana-400'
+                    ? "bg-zawana-800 text-white"
+                    : "bg-white text-gray-600 border border-zawana-200 hover:border-zawana-400"
                 }`}
               >
                 {cat.name}
@@ -85,7 +87,8 @@ export default function Shop() {
 
         {/* Results count */}
         <p className="text-sm text-gray-500 mb-6">
-          Showing {filtered.length} {filtered.length === 1 ? 'dress' : 'dresses'}
+          Showing {filtered.length}{" "}
+          {filtered.length === 1 ? "dress" : "dresses"}
         </p>
 
         {/* Grid */}
@@ -97,11 +100,10 @@ export default function Shop() {
           </div>
         ) : (
           <div className="text-center py-20">
-            <p className="text-gray-500 mb-4">No dresses found in this category.</p>
-            <button
-              onClick={() => setCategory('all')}
-              className="btn-primary"
-            >
+            <p className="text-gray-500 mb-4">
+              No dresses found in this category.
+            </p>
+            <button onClick={() => setCategory("all")} className="btn-primary">
               View All Dresses
             </button>
           </div>

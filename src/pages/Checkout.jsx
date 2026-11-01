@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useCart } from '../context/CartContext';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 
 export default function Checkout() {
   const { items, totalPrice, clearCart } = useCart();
@@ -8,25 +8,25 @@ export default function Checkout() {
 
   const [step, setStep] = useState(1); // 1 = Shipping, 2 = Payment, 3 = Processing
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const [shipping, setShipping] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    address: '',
-    city: '',
-    state: '',
-    zip: '',
-    country: 'United States',
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    address: "",
+    city: "",
+    state: "",
+    zip: "",
+    country: "United States",
   });
 
   const [payment, setPayment] = useState({
-    cardName: '',
-    cardNumber: '',
-    expiry: '',
-    cvc: '',
+    cardName: "",
+    cardNumber: "",
+    expiry: "",
+    cvc: "",
   });
 
   const shippingCost = totalPrice >= 150 ? 0 : 12.99;
@@ -37,7 +37,9 @@ export default function Checkout() {
     return (
       <div className="container-custom py-20 text-center">
         <h1 className="section-title mb-4">Your cart is empty</h1>
-        <p className="text-gray-500 mb-8">Add some beautiful dresses before checking out.</p>
+        <p className="text-gray-500 mb-8">
+          Add some beautiful dresses before checking out.
+        </p>
         <Link to="/shop" className="btn-primary">
           Continue Shopping
         </Link>
@@ -53,58 +55,68 @@ export default function Checkout() {
     let value = e.target.value;
     const name = e.target.name;
 
-    if (name === 'cardNumber') {
-      value = value.replace(/\D/g, '').slice(0, 16);
-      value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+    if (name === "cardNumber") {
+      value = value.replace(/\D/g, "").slice(0, 16);
+      value = value.replace(/(\d{4})(?=\d)/g, "$1 ");
     }
-    if (name === 'expiry') {
-      value = value.replace(/\D/g, '').slice(0, 4);
+    if (name === "expiry") {
+      value = value.replace(/\D/g, "").slice(0, 4);
       if (value.length >= 3) {
-        value = value.slice(0, 2) + '/' + value.slice(2);
+        value = value.slice(0, 2) + "/" + value.slice(2);
       }
     }
-    if (name === 'cvc') {
-      value = value.replace(/\D/g, '').slice(0, 4);
+    if (name === "cvc") {
+      value = value.replace(/\D/g, "").slice(0, 4);
     }
 
     setPayment({ ...payment, [name]: value });
   };
 
   const validateShipping = () => {
-    const required = ['firstName', 'lastName', 'email', 'address', 'city', 'state', 'zip'];
+    const required = [
+      "firstName",
+      "lastName",
+      "email",
+      "address",
+      "city",
+      "state",
+      "zip",
+    ];
     for (const field of required) {
       if (!shipping[field].trim()) {
-        setError(`Please fill in your ${field.replace(/([A-Z])/g, ' $1').toLowerCase()}`);
+        setError(
+          `Please fill in your ${field.replace(/([A-Z])/g, " $1").toLowerCase()}`,
+        );
         return false;
       }
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(shipping.email)) {
-      setError('Please enter a valid email address');
+      setError("Please enter a valid email address");
       return false;
     }
-    setError('');
+    setError("");
     return true;
   };
 
   const validatePayment = () => {
     if (!payment.cardName.trim()) {
-      setError('Please enter the name on card');
+      setError("Please enter the name on card");
       return false;
     }
-    const digits = payment.cardNumber.replace(/\s/g, '');
+    const digits = payment.cardNumber.replace(/\s/g, "");
     if (digits.length < 15) {
-      setError('Please enter a valid card number');
+      setError("Please enter a valid card number");
       return false;
     }
     if (!/^\d{2}\/\d{2}$/.test(payment.expiry)) {
-      setError('Please enter a valid expiry date (MM/YY)');
+      setError("Please enter a valid expiry date (MM/YY)");
       return false;
     }
     if (payment.cvc.length < 3) {
-      setError('Please enter a valid CVC');
+      setError("Please enter a valid CVC");
       return false;
     }
-    setError('');
+    setError("");
     return true;
   };
 
@@ -121,7 +133,7 @@ export default function Checkout() {
     if (!validatePayment()) return;
 
     setLoading(true);
-    setError('');
+    setError("");
     setStep(3);
 
     // Simulate payment processing
@@ -132,16 +144,18 @@ export default function Checkout() {
 
     if (success) {
       clearCart();
-      navigate('/order-success', {
+      navigate("/order-success", {
         state: {
-          orderId: 'ZW' + Date.now().toString().slice(-8),
+          orderId: "ZW" + Date.now().toString().slice(-8),
           total: grandTotal,
           email: shipping.email,
           items: [...items],
         },
       });
     } else {
-      setError('Payment declined. Please try another card or contact your bank.');
+      setError(
+        "Payment declined. Please try another card or contact your bank.",
+      );
       setStep(2);
       setLoading(false);
     }
@@ -153,15 +167,24 @@ export default function Checkout() {
       <div className="bg-white border-b border-zawana-100">
         <div className="container-custom py-6">
           <div className="flex items-center justify-between">
-            <Link to="/" className="text-2xl font-serif font-semibold text-zawana-900">
+            <Link
+              to="/"
+              className="text-2xl font-serif font-semibold text-zawana-900"
+            >
               Zawana
             </Link>
             <div className="flex items-center gap-2 text-sm text-gray-500">
-              <span className={step >= 1 ? 'text-zawana-800 font-medium' : ''}>Shipping</span>
+              <span className={step >= 1 ? "text-zawana-800 font-medium" : ""}>
+                Shipping
+              </span>
               <span>→</span>
-              <span className={step >= 2 ? 'text-zawana-800 font-medium' : ''}>Payment</span>
+              <span className={step >= 2 ? "text-zawana-800 font-medium" : ""}>
+                Payment
+              </span>
               <span>→</span>
-              <span className={step >= 3 ? 'text-zawana-800 font-medium' : ''}>Confirmation</span>
+              <span className={step >= 3 ? "text-zawana-800 font-medium" : ""}>
+                Confirmation
+              </span>
             </div>
           </div>
         </div>
@@ -172,8 +195,13 @@ export default function Checkout() {
           {/* Left - Forms */}
           <div className="lg:col-span-3">
             {step === 1 && (
-              <form onSubmit={handleContinueToPayment} className="bg-white p-6 md:p-8 shadow-sm">
-                <h2 className="text-xl font-serif text-zawana-900 mb-6">Shipping Information</h2>
+              <form
+                onSubmit={handleContinueToPayment}
+                className="bg-white p-6 md:p-8 shadow-sm"
+              >
+                <h2 className="text-xl font-serif text-zawana-900 mb-6">
+                  Shipping Information
+                </h2>
 
                 {error && (
                   <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-700 text-sm">
@@ -183,7 +211,9 @@ export default function Checkout() {
 
                 <div className="grid sm:grid-cols-2 gap-4 mb-4">
                   <div>
-                    <label className="block text-sm font-medium text-zawana-900 mb-1.5">First Name *</label>
+                    <label className="block text-sm font-medium text-zawana-900 mb-1.5">
+                      First Name *
+                    </label>
                     <input
                       type="text"
                       name="firstName"
@@ -194,7 +224,9 @@ export default function Checkout() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-zawana-900 mb-1.5">Last Name *</label>
+                    <label className="block text-sm font-medium text-zawana-900 mb-1.5">
+                      Last Name *
+                    </label>
                     <input
                       type="text"
                       name="lastName"
@@ -208,7 +240,9 @@ export default function Checkout() {
 
                 <div className="grid sm:grid-cols-2 gap-4 mb-4">
                   <div>
-                    <label className="block text-sm font-medium text-zawana-900 mb-1.5">Email *</label>
+                    <label className="block text-sm font-medium text-zawana-900 mb-1.5">
+                      Email *
+                    </label>
                     <input
                       type="email"
                       name="email"
@@ -219,7 +253,9 @@ export default function Checkout() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-zawana-900 mb-1.5">Phone</label>
+                    <label className="block text-sm font-medium text-zawana-900 mb-1.5">
+                      Phone
+                    </label>
                     <input
                       type="tel"
                       name="phone"
@@ -231,7 +267,9 @@ export default function Checkout() {
                 </div>
 
                 <div className="mb-4">
-                  <label className="block text-sm font-medium text-zawana-900 mb-1.5">Address *</label>
+                  <label className="block text-sm font-medium text-zawana-900 mb-1.5">
+                    Address *
+                  </label>
                   <input
                     type="text"
                     name="address"
@@ -244,7 +282,9 @@ export default function Checkout() {
 
                 <div className="grid sm:grid-cols-3 gap-4 mb-6">
                   <div>
-                    <label className="block text-sm font-medium text-zawana-900 mb-1.5">City *</label>
+                    <label className="block text-sm font-medium text-zawana-900 mb-1.5">
+                      City *
+                    </label>
                     <input
                       type="text"
                       name="city"
@@ -255,7 +295,9 @@ export default function Checkout() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-zawana-900 mb-1.5">State *</label>
+                    <label className="block text-sm font-medium text-zawana-900 mb-1.5">
+                      State *
+                    </label>
                     <input
                       type="text"
                       name="state"
@@ -266,7 +308,9 @@ export default function Checkout() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-zawana-900 mb-1.5">ZIP Code *</label>
+                    <label className="block text-sm font-medium text-zawana-900 mb-1.5">
+                      ZIP Code *
+                    </label>
                     <input
                       type="text"
                       name="zip"
@@ -285,9 +329,14 @@ export default function Checkout() {
             )}
 
             {step === 2 && (
-              <form onSubmit={handlePlaceOrder} className="bg-white p-6 md:p-8 shadow-sm">
+              <form
+                onSubmit={handlePlaceOrder}
+                className="bg-white p-6 md:p-8 shadow-sm"
+              >
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-xl font-serif text-zawana-900">Payment</h2>
+                  <h2 className="text-xl font-serif text-zawana-900">
+                    Payment
+                  </h2>
                   <button
                     type="button"
                     onClick={() => setStep(1)}
@@ -305,11 +354,15 @@ export default function Checkout() {
 
                 {/* Demo notice */}
                 <div className="mb-6 p-4 bg-amber-50 border border-amber-200 text-amber-800 text-sm">
-                  <strong>Demo Mode:</strong> Use any card number (e.g. 4242 4242 4242 4242), any future expiry, and any 3-digit CVC. No real charges.
+                  <strong>Demo Mode:</strong> Use any card number (e.g. 4242
+                  4242 4242 4242), any future expiry, and any 3-digit CVC. No
+                  real charges.
                 </div>
 
                 <div className="mb-4">
-                  <label className="block text-sm font-medium text-zawana-900 mb-1.5">Name on Card *</label>
+                  <label className="block text-sm font-medium text-zawana-900 mb-1.5">
+                    Name on Card *
+                  </label>
                   <input
                     type="text"
                     name="cardName"
@@ -322,7 +375,9 @@ export default function Checkout() {
                 </div>
 
                 <div className="mb-4">
-                  <label className="block text-sm font-medium text-zawana-900 mb-1.5">Card Number *</label>
+                  <label className="block text-sm font-medium text-zawana-900 mb-1.5">
+                    Card Number *
+                  </label>
                   <input
                     type="text"
                     name="cardNumber"
@@ -336,7 +391,9 @@ export default function Checkout() {
 
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   <div>
-                    <label className="block text-sm font-medium text-zawana-900 mb-1.5">Expiry *</label>
+                    <label className="block text-sm font-medium text-zawana-900 mb-1.5">
+                      Expiry *
+                    </label>
                     <input
                       type="text"
                       name="expiry"
@@ -348,7 +405,9 @@ export default function Checkout() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-zawana-900 mb-1.5">CVC *</label>
+                    <label className="block text-sm font-medium text-zawana-900 mb-1.5">
+                      CVC *
+                    </label>
                     <input
                       type="text"
                       name="cvc"
@@ -374,7 +433,7 @@ export default function Checkout() {
                   disabled={loading}
                   className="w-full btn-primary py-4 disabled:opacity-60"
                 >
-                  {loading ? 'Processing…' : `Pay $${grandTotal.toFixed(2)}`}
+                  {loading ? "Processing…" : `Pay $${grandTotal.toFixed(2)}`}
                 </button>
 
                 <p className="mt-4 text-xs text-center text-gray-400">
@@ -386,7 +445,9 @@ export default function Checkout() {
             {step === 3 && (
               <div className="bg-white p-10 shadow-sm text-center">
                 <div className="w-16 h-16 mx-auto mb-6 border-4 border-zawana-200 border-t-zawana-800 rounded-full animate-spin" />
-                <h2 className="text-xl font-serif text-zawana-900 mb-2">Processing your payment</h2>
+                <h2 className="text-xl font-serif text-zawana-900 mb-2">
+                  Processing your payment
+                </h2>
                 <p className="text-gray-500">Please wait a moment…</p>
               </div>
             )}
@@ -395,18 +456,25 @@ export default function Checkout() {
           {/* Right - Order Summary */}
           <div className="lg:col-span-2">
             <div className="bg-white p-6 shadow-sm sticky top-24">
-              <h3 className="text-lg font-serif text-zawana-900 mb-5">Order Summary</h3>
+              <h3 className="text-lg font-serif text-zawana-900 mb-5">
+                Order Summary
+              </h3>
 
               <ul className="space-y-4 mb-6 max-h-64 overflow-y-auto">
                 {items.map((item) => (
-                  <li key={`${item.id}-${item.size}-${item.color}`} className="flex gap-3">
+                  <li
+                    key={`${item.id}-${item.size}-${item.color}`}
+                    className="flex gap-3"
+                  >
                     <img
                       src={item.image}
                       alt={item.name}
                       className="w-16 h-20 object-cover bg-zawana-100 flex-shrink-0"
                     />
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-zawana-900 truncate">{item.name}</p>
+                      <p className="text-sm font-medium text-zawana-900 truncate">
+                        {item.name}
+                      </p>
                       <p className="text-xs text-gray-500">
                         {item.size} / {item.color} × {item.quantity}
                       </p>
@@ -425,7 +493,11 @@ export default function Checkout() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-500">Shipping</span>
-                  <span>{shippingCost === 0 ? 'Free' : `$${shippingCost.toFixed(2)}`}</span>
+                  <span>
+                    {shippingCost === 0
+                      ? "Free"
+                      : `$${shippingCost.toFixed(2)}`}
+                  </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-500">Tax (8%)</span>

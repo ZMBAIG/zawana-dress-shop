@@ -4,8 +4,8 @@ export const products = [
     name: "Aurora Evening Gown",
     price: 289,
     category: "evening",
-    image: "/public/images/img-001a.jpeg",
-    images: ["/public/images/img-001a.jpeg", "/public/images/img-001b.jpeg"],
+    image: "/images/img-001a.jpeg",
+    images: ["/images/img-001a.jpeg", "/images/img-001b.jpeg"],
     description:
       "A stunning floor-length evening gown crafted from luxurious silk chiffon. Features delicate beadwork along the neckline and a graceful open back. Perfect for formal events and galas.",
     sizes: ["XS", "S", "M", "L", "XL"],
@@ -18,8 +18,8 @@ export const products = [
     name: "Bella Floral Midi",
     price: 149,
     category: "casual",
-    image: "/public/images/img-001b.jpeg",
-    images: ["/public/images/img-001b.jpeg", "/public/images/img-001b.jpeg"],
+    image: "/images/img-001b.jpeg",
+    images: ["/images/img-001b.jpeg", "/images/img-001b.jpeg"],
     description:
       "A romantic floral midi dress with soft flutter sleeves and a flattering wrap silhouette. Lightweight fabric ideal for spring brunches and garden parties.",
     sizes: ["XS", "S", "M", "L"],
@@ -29,11 +29,11 @@ export const products = [
   },
   {
     id: 3,
-    name: "Celeste Cocktail Dress",
-    price: 198,
+    name: "Mehndi Dress",
+    price: 29.99,
     category: "formal",
-    image: "/public/images/img-001c.jpeg",
-    images: ["/public/images/img-001c.jpeg"],
+    image: "/images/img-001c.jpeg",
+    images: ["/images/img-001c.jpeg"],
     description:
       "Elegant cocktail dress with a sculpted bodice and flowing A-line skirt. The subtle shimmer fabric catches the light beautifully for evening occasions.",
     sizes: ["S", "M", "L", "XL"],
@@ -46,8 +46,8 @@ export const products = [
     name: "Luna Linen Summer Dress",
     price: 119,
     category: "summer",
-    image: "/public/images/img-001d.jpeg",
-    images: ["/public/images/img-001d.jpeg"],
+    image: "/images/img-001d.jpeg",
+    images: ["/images/img-001d.jpeg"],
     description:
       "Breezy linen dress with adjustable straps and a relaxed fit. Perfect for warm summer days, beach vacations, and casual outings.",
     sizes: ["XS", "S", "M", "L", "XL"],
@@ -60,8 +60,8 @@ export const products = [
     name: "Valentina Velvet Maxi",
     price: 259,
     category: "evening",
-    image: "/public/images/img-001a.jpeg",
-    images: ["/public/images/img-001a.jpeg"],
+    image: "/images/img-001a.jpeg",
+    images: ["/images/img-001a.jpeg"],
     description:
       "Luxurious velvet maxi dress with long sleeves and a dramatic high slit. Timeless elegance for winter formal events and holiday parties.",
     sizes: ["S", "M", "L"],
@@ -91,8 +91,8 @@ export const products = [
     name: "Isabella Bridal Guest",
     price: 220,
     category: "formal",
-    image: "/public/images/img-001a.jpeg",
-    images: ["/public/images/img-001a.jpeg"],
+    image: "/images/img-001a.jpeg",
+    images: ["/images/img-001a.jpeg"],
     description:
       "Sophisticated midi dress with delicate lace overlay and subtle pearl accents. Ideal for weddings, engagement parties, and special celebrations.",
     sizes: ["XS", "S", "M", "L"],
@@ -156,11 +156,8 @@ export const products = [
     name: "Rosa Tulle Gown",
     price: 320,
     category: "evening",
-    image:
-      "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&h=800&fit=crop",
-    images: [
-      "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&h=800&fit=crop",
-    ],
+    image: "/images/img-001a.jpeg",
+    images: ["/images/img-001a.jpeg"],
     description:
       "Dreamy tulle ball gown with layers of soft fabric and a fitted bodice. Make a statement at proms, galas, and formal dances.",
     sizes: ["XS", "S", "M", "L"],
@@ -173,8 +170,8 @@ export const products = [
     name: "Nora Knit Midi",
     price: 35,
     category: "casual",
-    image: "/public/images/img-001a.jpeg",
-    images: ["/public/images/img-001a.jpeg"],
+    image: "/images/img-001a.jpeg",
+    images: ["/images/img-001a.jpeg"],
     description:
       "Soft ribbed knit midi dress with a flattering body-skimming silhouette. Comfortable enough for all-day wear, polished enough for dinner.",
     sizes: ["S", "M", "L", "XL"],

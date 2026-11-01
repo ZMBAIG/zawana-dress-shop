@@ -1,0 +1,193 @@
+export const products = [
+  {
+    id: 1,
+    name: "Aurora Evening Gown",
+    price: 289,
+    category: "evening",
+    image: "/public/images/img-001a.jpeg",
+    images: ["/public/images/img-001a.jpeg", "/public/images/img-001b.jpeg"],
+    description:
+      "A stunning floor-length evening gown crafted from luxurious silk chiffon. Features delicate beadwork along the neckline and a graceful open back. Perfect for formal events and galas.",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: ["Midnight Black", "Deep Burgundy", "Champagne"],
+    featured: true,
+    new: true,
+  },
+  {
+    id: 2,
+    name: "Bella Floral Midi",
+    price: 149,
+    category: "casual",
+    image: "/public/images/img-001b.jpeg",
+    images: ["/public/images/img-001b.jpeg", "/public/images/img-001b.jpeg"],
+    description:
+      "A romantic floral midi dress with soft flutter sleeves and a flattering wrap silhouette. Lightweight fabric ideal for spring brunches and garden parties.",
+    sizes: ["XS", "S", "M", "L"],
+    colors: ["Blush Floral", "Sage Green"],
+    featured: true,
+    new: false,
+  },
+  {
+    id: 3,
+    name: "Celeste Cocktail Dress",
+    price: 198,
+    category: "formal",
+    image: "/public/images/img-001c.jpeg",
+    images: ["/public/images/img-001c.jpeg"],
+    description:
+      "Elegant cocktail dress with a sculpted bodice and flowing A-line skirt. The subtle shimmer fabric catches the light beautifully for evening occasions.",
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["Emerald", "Navy", "Rose Gold"],
+    featured: true,
+    new: true,
+  },
+  {
+    id: 4,
+    name: "Luna Linen Summer Dress",
+    price: 119,
+    category: "summer",
+    image: "/public/images/img-001d.jpeg",
+    images: ["/public/images/img-001d.jpeg"],
+    description:
+      "Breezy linen dress with adjustable straps and a relaxed fit. Perfect for warm summer days, beach vacations, and casual outings.",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: ["Natural Linen", "Soft White", "Sky Blue"],
+    featured: false,
+    new: true,
+  },
+  {
+    id: 5,
+    name: "Valentina Velvet Maxi",
+    price: 259,
+    category: "evening",
+    image: "/public/images/img-001a.jpeg",
+    images: ["/public/images/img-001a.jpeg"],
+    description:
+      "Luxurious velvet maxi dress with long sleeves and a dramatic high slit. Timeless elegance for winter formal events and holiday parties.",
+    sizes: ["S", "M", "L"],
+    colors: ["Wine Red", "Forest Green", "Black"],
+    featured: true,
+    new: false,
+  },
+  {
+    id: 6,
+    name: "Sofia Wrap Dress",
+    price: 135,
+    category: "casual",
+    image:
+      "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600&h=800&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=600&h=800&fit=crop",
+    ],
+    description:
+      "Classic wrap dress in soft jersey fabric. Universally flattering fit that transitions effortlessly from office to evening.",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: ["Black", "Dusty Rose", "Navy", "Ivory"],
+    featured: false,
+    new: false,
+  },
+  {
+    id: 7,
+    name: "Isabella Bridal Guest",
+    price: 220,
+    category: "formal",
+    image: "/public/images/img-001a.jpeg",
+    images: ["/public/images/img-001a.jpeg"],
+    description:
+      "Sophisticated midi dress with delicate lace overlay and subtle pearl accents. Ideal for weddings, engagement parties, and special celebrations.",
+    sizes: ["XS", "S", "M", "L"],
+    colors: ["Champagne", "Blush Pink", "Soft Grey"],
+    featured: true,
+    new: true,
+  },
+  {
+    id: 8,
+    name: "Maya Boho Maxi",
+    price: 165,
+    category: "summer",
+    image:
+      "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=600&h=800&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=600&h=800&fit=crop",
+    ],
+    description:
+      "Free-spirited boho maxi dress with intricate embroidery and tassel details. Lightweight and flowy for festivals and beach getaways.",
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["Ivory", "Terracotta", "Sage"],
+    featured: false,
+    new: false,
+  },
+  {
+    id: 9,
+    name: "Elena Satin Slip",
+    price: 175,
+    category: "evening",
+    image:
+      "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600&h=800&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600&h=800&fit=crop",
+    ],
+    description:
+      "Minimalist satin slip dress with adjustable straps and a bias cut that drapes beautifully. Effortless sophistication for any evening.",
+    sizes: ["XS", "S", "M", "L"],
+    colors: ["Black", "Champagne", "Ruby"],
+    featured: true,
+    new: false,
+  },
+  {
+    id: 10,
+    name: "Clara Shirt Dress",
+    price: 128,
+    category: "casual",
+    image:
+      "https://images.unsplash.com/photo-1502716119720-b23a93e5fe1b?w=600&h=800&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1502716119720-b23a93e5fe1b?w=600&h=800&fit=crop",
+    ],
+    description:
+      "Crisp cotton shirt dress with a belted waist and side pockets. A versatile wardrobe staple for everyday elegance.",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: ["White", "Light Blue", "Khaki"],
+    featured: false,
+    new: true,
+  },
+  {
+    id: 11,
+    name: "Rosa Tulle Gown",
+    price: 320,
+    category: "evening",
+    image:
+      "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&h=800&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&h=800&fit=crop",
+    ],
+    description:
+      "Dreamy tulle ball gown with layers of soft fabric and a fitted bodice. Make a statement at proms, galas, and formal dances.",
+    sizes: ["XS", "S", "M", "L"],
+    colors: ["Blush", "Ivory", "Lavender"],
+    featured: true,
+    new: true,
+  },
+  {
+    id: 12,
+    name: "Nora Knit Midi",
+    price: 35,
+    category: "casual",
+    image: "/public/images/img-001a.jpeg",
+    images: ["/public/images/img-001a.jpeg"],
+    description:
+      "Soft ribbed knit midi dress with a flattering body-skimming silhouette. Comfortable enough for all-day wear, polished enough for dinner.",
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["Camel", "Black", "Olive", "Cream"],
+    featured: false,
+    new: false,
+  },
+];
+
+export const categories = [
+  { id: "all", name: "All Dresses" },
+  { id: "casual", name: "Casual" },
+  { id: "formal", name: "Formal" },
+  { id: "evening", name: "Evening" },
+  { id: "summer", name: "Summer" },
+];
